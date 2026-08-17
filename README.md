@@ -108,6 +108,8 @@ It transforms a layer's outputs such that sum of all the outputs is 1. It can be
 ### Others...
 Covering all of the optimizers would be pretty lengthy and hard to read. This code is free to fiddle with and I have added Adam, AdaGrad and Momentum based Batch Gradient Descent into it so one could experiment freely.
 
+There are also various regularizers available such as Lasso (L1) or Ridge (L2) regularizers and dropout layers as well for further experimentation.
+
 ## Acknowledgments
 
 - I am uploading something for the first time here so feedback on practices or code structure is welcome.
@@ -115,4 +117,4 @@ Covering all of the optimizers would be pretty lengthy and hard to read. This co
 
 ##  Improvements in future
 - Handwritten backward function.
-- Adding even more optimizers.
+- Adding even more optimizers and regularizers.
