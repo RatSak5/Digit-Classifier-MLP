@@ -28,13 +28,13 @@ Although you can play with it, here's what I used
 - Optimizer: RMSprop
 
 ## Hyperparameters
-Iterations : 14000
-Batch size : 32
-Learning rate for RMSprop : 0.001
-Decay rate for RMSprop (γ) : 0.9 
-ε for RMSprop : 1e-5
-Learning rate for Batch Gradient Descent : 0.1
-L2 Regularization parameter (α) : 0.01
+- Iterations : 14000
+- Batch size : 32
+- Learning rate for RMSprop : 0.001
+- Decay rate for RMSprop (γ) : 0.9 
+- ε for RMSprop : 1e-5
+- Learning rate for Batch Gradient Descent : 0.1
+- L2 Regularization parameter (α) : 0.01
 
 ## My results
 
@@ -84,7 +84,9 @@ We can achieve various results through these architectures such as langauge mode
 
 ### RMSprop optimizer
 Now, the image might look complicated but it's simple.
+
 We keep track of the running averages of the squared gradients for various parameters our network has. 
+
 Then simply calculate the update step as the gradient divided by the square root of this running mean plus a small constant used for preventing division by zero.
 
 In my code, the β is written as γ. It represents the same quantity.
