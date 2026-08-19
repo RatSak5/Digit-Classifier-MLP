@@ -33,7 +33,7 @@ Although you can play with it, here's what I used
 - Learning rate for RMSprop : 0.001
 - Decay rate for RMSprop (γ) : 0.9 
 - ε for RMSprop : 1e-5
-- Learning rate for Batch Gradient Descent : 0.1
+- Learning rate for Mini-Batch Gradient Descent : 0.1
 - L2 Regularization parameter (α) : 0.01
 
 ## My results
@@ -44,7 +44,7 @@ Although you can play with it, here's what I used
 
 I do have doubts about these accuracy scores. Any feedback on this is welcome.
 
-Although, I got an even higher training loss on Batch Gradient Descent optimized model.
+Although, I got an even higher training loss on Mini-Batch Gradient Descent optimized model.
 
 - Training accuracy   : 99.97%
 - Evaluation accuracy : 96.78%
@@ -64,6 +64,9 @@ We see highest confusion for classifying 4/9 and 3/5
 We see highest confusion for classifying 4/9 while it maybe has confusion between 1s and 2s at times
 
 <img width="309" height="205" alt="image" src="https://github.com/user-attachments/assets/b5ef599a-6657-4da3-8e85-5d18cd8c749a" />
+
+#### Note
+Rows represent actual values and columns represent predicted values.
 
 ## Explanation for Topics mentioned
 
@@ -108,7 +111,7 @@ It transforms a layer's outputs such that sum of all the outputs is 1. It can be
 <img width="772" height="397" alt="image" src="https://github.com/user-attachments/assets/2bb49aad-99d6-4e9b-906b-d24f338202df" />
 
 ### Others...
-Covering all of the optimizers would be pretty lengthy and hard to read. This code is free to fiddle with and I have added Adam, AdaGrad and Momentum based Batch Gradient Descent into it so one could experiment freely.
+Covering all of the optimizers would be pretty lengthy and hard to read. This code is free to fiddle with and I have added Adam, AdaGrad and Momentum based Mini-Batch Gradient Descent into it so one could experiment freely.
 
 There are also various regularizers available such as Lasso (L1) or Ridge (L2) regularizers and dropout layers as well for further experimentation.
 
