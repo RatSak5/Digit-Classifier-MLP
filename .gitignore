@@ -6,6 +6,7 @@ venv/
 
 # jupyter
 .ipynb_checkpoints/
+notebooks/
 
 notebooks/
 
