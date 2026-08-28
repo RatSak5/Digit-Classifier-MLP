@@ -1,11 +1,4 @@
-"""
-Defines the MLP architecture used for MNIST classification and applies the
-notebook's custom (gain-scaled) weight initialization on top of the default
-per-layer init.
-"""
-
 import torch
-
 from src.data import NUM_CLASSES, NUM_PIXELS
 from src.layers import *
 
@@ -30,12 +23,14 @@ def build_model(n_hidden=260, n_pixels=NUM_PIXELS, n_classes=NUM_CLASSES):
 
         for i in range(n - 1):
             layer = model.layers[i]
-            if isinstance(layer, Linear):
-                if i < n - 1 and model.layers[i + 1].__class__.__name__ in gain:
+            if isinstance(layer, Linear) and i < n - 1 and model.layers[i + 1].__class__.__name__ in gain:
                     layer.weights *= gain[model.layers[i + 1].__class__.__name__]
             if isinstance(layer, BatchNorm1d):
                 layer.training = True
 
             model.layers[i] = layer
+    
+    for p in model.params:
+        p.requires_grad = True
 
     return model

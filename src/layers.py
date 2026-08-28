@@ -1,10 +1,3 @@
-"""
-Minimal, from-scratch neural network building blocks implemented on top of
-raw PyTorch tensors (no torch.nn). Mirrors the API style of torch.nn modules:
-each layer is callable, exposes .parameters(), and (where it holds trainable
-state) .reset_params().
-"""
-
 import torch
 
 
@@ -29,8 +22,9 @@ class Linear:
         return [self.weights] + biases
 
     def reset_params(self):
-        self.weights = torch.randn(self.fan_in, self.fan_out) / self.fan_in ** 0.5
-        self.biases = torch.zeros(self.fan_out) if self.bias else None
+        self.weights.data = torch.randn(self.fan_in, self.fan_out) / self.fan_in ** 0.5
+        if self.bias:
+            self.biases.data = torch.zeros(self.fan_out)
 
 
 class BatchNorm1d:
@@ -70,11 +64,11 @@ class BatchNorm1d:
         return [self.gamma, self.beta]
 
     def reset_params(self):
-        self.gamma = torch.ones(1, self.dim)
-        self.beta = torch.zeros(1, self.dim)
+        self.gamma.data = torch.ones(1, self.dim)
+        self.beta.data = torch.zeros(1, self.dim)
 
-        self.running_mean = torch.zeros(1, self.dim)
-        self.running_var = torch.ones(1, self.dim)
+        self.running_mean.data = torch.zeros(1, self.dim)
+        self.running_var.data = torch.ones(1, self.dim)
 
 
 class Dropout:
@@ -122,7 +116,7 @@ class PReLU:
         return [self.weight]
 
     def reset_params(self):
-        self.weight = torch.randn(1)
+        self.weight.data = torch.randn(1)
 
 
 class SoftMax:
@@ -150,7 +144,7 @@ class Embedding:
         return [self.weight]
 
     def reset_params(self):
-        self.weight = torch.randn((self.vocab_size, self.emb_size))
+        self.weight.data = torch.randn((self.vocab_size, self.emb_size))
 
 
 class Flatten:

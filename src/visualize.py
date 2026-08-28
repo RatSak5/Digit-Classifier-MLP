@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def see(pixels):
@@ -9,8 +10,8 @@ def see(pixels):
 
 def plot_confusion_matrices(matrices, titles):
     # Matrices shown in the form of grey-scale images
-    fig, axes = plt.subplots(1, 2, figsize=(10, 10))
-    axes = axes.ravel()
+    fig, axes = plt.subplots(1, len(matrices), figsize=(10, 10))
+    axes = np.array(axes).ravel()
 
     showmat = []
     for mat in matrices:
