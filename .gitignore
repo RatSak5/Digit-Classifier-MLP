@@ -8,5 +8,4 @@ venv/
 .ipynb_checkpoints/
 notebooks/
 
-notebooks/
-
+.vscode/
